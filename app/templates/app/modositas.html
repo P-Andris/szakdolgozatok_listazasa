@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %}>
+    <title>Módosítás</title>
+</head>
+<body>
+    <main>
+        <header><h1></h1></header>
+        <article>
+            <form method='POST'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' value='Módosítás'>
+            </form>
+        </article>
+        <footer>@ Piller András</footer>
+    </main>    
+</body>
+</html>

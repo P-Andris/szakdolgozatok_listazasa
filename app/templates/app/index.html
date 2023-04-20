@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %}>
+    <title>Főoldal</title>
+</head>
+<body>
+    <main>
+        <header><h1>Számalk-Szalézi technikum és SzakGimnázium 2020-2022 évfolyam szoftverfejlesztőinek szakdolgozatai:</h1></header>
+        <article>
+            {% if szakdolgozatok %}
+                <div class="responsive-table">
+                    <table>
+                        <tr class="table-header">
+                            <th>Szakdolgozat neve</th>
+                            <th>GitHub link</th>
+                            <th>Oldal link</th>
+                            <th>Tagok nevei</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        {% for szakdolgozat in szakdolgozatok %}
+                            <tr>
+                                <th>{{ szakdolgozat.szakdoga_neve }}</th>
+                                <th>{{ szakdolgozat.githublink }}</th>
+                                <th>{{ szakdolgozat.oldallink }}</th>
+                                <th>{{ szakdolgozat.tagokneve }}</th>
+                                <th><a href="{% url 'modositas' szakdolgozat.id %}">Módosítás</a></th>
+                                <th><a href="{% url 'torles' szakdolgozat.id %}">Törlés</a></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <h4>Nincs adat</h4>
+            {% endif %}
+                
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Új">
+            </form>
+        </article>
+        <footer>@ Piller András</footer>
+    </main>
+</body>
+</html>

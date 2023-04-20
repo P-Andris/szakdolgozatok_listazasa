@@ -1,0 +1,19 @@
+.table-header {
+    background-color: #dddddd !important;
+}
+
+.responsive-table {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table tr th {
+    padding: 5px;
+}
+
+table tr:nth-child(odd) {
+    background-color: lightblue;
+}
