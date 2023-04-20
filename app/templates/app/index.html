@@ -29,8 +29,8 @@
                                 <th>{{ szakdolgozat.githublink }}</th>
                                 <th>{{ szakdolgozat.oldallink }}</th>
                                 <th>{{ szakdolgozat.tagokneve }}</th>
-                                <th><a href="{% url 'modositas' szakdolgozat.id %}">Módosítás</a></th>
-                                <th><a href="{% url 'torles' szakdolgozat.id %}">Törlés</a></th>
+                                <th><a class="modositas" href="{% url 'modositas' szakdolgozat.id %}">Módosítás</a></th>
+                                <th><a class="torles" href="{% url 'torles' szakdolgozat.id %}">Törlés</a></th>
                             </tr>
                         {% endfor %}
                     </table>
@@ -38,14 +38,16 @@
             {% else %}
                 <h4>Nincs adat</h4>
             {% endif %}
-                
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Új">
-            </form>
+            <div class='form-div'>
+                <h3>Új felvétele</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Új">
+                </form>
+            </div>
         </article>
-        <footer>@ Piller András</footer>
     </main>
+    <footer>@ Piller András</footer>
 </body>
 </html>
